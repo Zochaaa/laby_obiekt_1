@@ -6,9 +6,9 @@ C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(131,63): warning C4
 C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(136,33): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(136,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
 C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(250,65): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(377,30): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(571,54): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(571,42): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(571,34): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(571,26): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(393,30): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(611,54): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(611,42): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(611,34): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\zosia\source\repos\laby_obiekt\laby_obiekt\main.cpp(611,26): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
   laby_obiekt.vcxproj -> C:\Users\zosia\source\repos\laby_obiekt\x64\Debug\laby_obiekt.exe
