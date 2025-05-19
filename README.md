@@ -12,5 +12,5 @@ Dodano do gry:
 
 
 
-(results/laby_obiekt.gif)
+
 
