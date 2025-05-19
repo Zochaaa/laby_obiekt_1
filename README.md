@@ -8,7 +8,7 @@ Dodano do gry:
 - napis game over i możliwość ponownego zagrania 
 
 
-![Demo gry](![Demo gry](https://raw.githubusercontent.com/Zochaaa/laby_obiekt_1/main/laby_obiekt/results/laby_obiekt.gif)
+(![Demo gry](https://raw.githubusercontent.com/Zochaaa/laby_obiekt_1/main/laby_obiekt/results/laby_obiekt.gif)
 
 
 
