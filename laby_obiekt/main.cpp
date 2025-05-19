@@ -223,7 +223,7 @@ void DrawRotatingStar(Vector2 center, int points, float outerRadius, float inner
 
 
 // --- PROJECTILE HIERARCHY ---
-enum class WeaponType { LASER, BULLET, COUNT };
+enum class WeaponType { LASER, BULLET, TRIPLE_STAR, COUNT };
 class Projectile {
 public:
 	Projectile(Vector2 pos, Vector2 vel, int dmg, WeaponType wt)
@@ -277,16 +277,32 @@ private:
 
 inline static Projectile MakeProjectile(WeaponType wt,
 	const Vector2 pos,
-	float speed)
+	float speed,
+	float angleOffset = 0.f)  // nowy parametr dla kąta początkowego (w stopniach)
 {
-	Vector2 vel{ 0, -speed };
+	// kierunek prędkości bazowy to (0, -1) czyli do góry
+	Vector2 baseDir = { 0.f, -1.f };
+
+	// Obracamy wektor o angleOffset (w stopniach)
+	float rad = angleOffset * DEG2RAD;
+	Vector2 rotatedDir = {
+		baseDir.x * cosf(rad) - baseDir.y * sinf(rad),
+		baseDir.x * sinf(rad) + baseDir.y * cosf(rad)
+	};
+
+	Vector2 vel = Vector2Scale(rotatedDir, speed);
+
 	if (wt == WeaponType::LASER) {
 		return Projectile(pos, vel, 20, wt);
+	}
+	else if (wt == WeaponType::TRIPLE_STAR) {
+		return Projectile(pos, vel, 10, wt);
 	}
 	else {
 		return Projectile(pos, vel, 10, wt);
 	}
 }
+
 
 // --- SHIP HIERARCHY ---
 class Ship {
@@ -458,11 +474,29 @@ public:
 
 					while (shotTimer >= interval) {
 						Vector2 p = player->GetPosition();
-						p.y -= player->GetRadius();
-						projectiles.push_back(MakeProjectile(currentWeapon, p, projSpeed));
+						float spacing = 15.f;
+
+						if (currentWeapon == WeaponType::TRIPLE_STAR) {
+							// Środkowa gwiazdka lecąca na wprost
+							Vector2 centerPos = { p.x, p.y - player->GetRadius() };
+							// Lewa i prawa gwiazdka z lekkim odchyleniem kątowym (np. ±15 stopni)
+							Vector2 leftPos = { p.x - spacing, p.y - player->GetRadius() };
+							Vector2 rightPos = { p.x + spacing, p.y - player->GetRadius() };
+
+							projectiles.push_back(MakeProjectile(currentWeapon, centerPos, projSpeed, 0.f));
+							projectiles.push_back(MakeProjectile(currentWeapon, leftPos, projSpeed, -15.f));
+							projectiles.push_back(MakeProjectile(currentWeapon, rightPos, projSpeed, 15.f));
+						}
+						else {
+							Vector2 projPos = { p.x, p.y - player->GetRadius() };
+							projectiles.push_back(MakeProjectile(currentWeapon, projPos, projSpeed));
+						}
+
 						PlaySound(shootSound);
 						shotTimer -= interval;
 					}
+
+
 				}
 				else {
 					float maxInterval = 1.f / player->GetFireRate(currentWeapon);
@@ -531,7 +565,13 @@ public:
 				Renderer::Instance().Begin();
 
 				DrawText(TextFormat("HP: %d", player->GetHP()), 10, 10, 20, GREEN);
-				const char* weaponName = (currentWeapon == WeaponType::LASER) ? "LASER" : "BULLET";
+				const char* weaponName = "UNKNOWN";
+				switch (currentWeapon) {
+				case WeaponType::LASER: weaponName = "LASER"; break;
+				case WeaponType::BULLET: weaponName = "BULLET"; break;
+				case WeaponType::TRIPLE_STAR: weaponName = "TRIPLE STAR"; break;
+				}
+
 				DrawText(TextFormat("Weapon: %s", weaponName), 10, 40, 20, BLUE);
 
 				for (const auto& projPtr : projectiles) projPtr.Draw();
