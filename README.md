@@ -5,7 +5,7 @@ Dodano do gry:
 - dodanie dźwięku strzelania
 - dodanie dźwięku umierania statku
 - pasek życia statku
-- napis game over i możliwość ponownego zagrania 
+- napis game over
 
 
 ![Demo gry](https://raw.githubusercontent.com/Zochaaa/laby_obiekt_1/main/laby_obiekt/results/laby_obiekt.gif)
